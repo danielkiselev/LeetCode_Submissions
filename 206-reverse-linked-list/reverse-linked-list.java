@@ -3,27 +3,37 @@
  * public class ListNode {
  *     int val;
  *     ListNode next;
- *     ListNode(int x) { val = x; }
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
 class Solution {
-    ListNode root;
+    ListNode holder;
     public ListNode reverseList(ListNode head) {
-        if(head == null){
+        if( head == null||head.next==null ){
+
             return head;
         }
         trav(head).next = null;
-        return root;
+        return holder;
+
+
+        
     }
-    
-    private ListNode trav(ListNode curr){
-        ListNode res;
-        if(curr.next != null){
-            res = trav(curr.next);
-            res.next = curr;
-            return res.next;
+
+    ListNode trav(ListNode n) {
+        if(n.next != null){
+            ListNode res;
+            res = trav(n.next);
+            res.next = n;
+            return n;
+
         }
-        root = curr;
-        return curr;
+        else{
+            holder = n;
+            return n;
+        }
+    
     }
 }
