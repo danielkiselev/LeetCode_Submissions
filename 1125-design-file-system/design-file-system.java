@@ -1,32 +1,38 @@
 class FileSystem {
 
-    HashMap<String, Integer> paths;
+  Map<String, Integer> directory;
+
+  public FileSystem() {
+    directory = new HashMap<>();
+    directory.put("/", 1);
+  }
+  
+  // Returns false if the path already exists or its parent path doesn't exist.
+  // paths - format is: / followed by one or more lowercase English letters
+  public boolean createPath(String path, int value) {
+    int lastSlash = lastSlashIndex(path);
+    if (path.length() == 0)
+      return false;
     
-    public FileSystem() {
-        this.paths = new HashMap<String, Integer>();
-    }
-    
-    public boolean createPath(String path, int value) {
-        
-        // Step-1: basic path validations
-        if (path.isEmpty() || (path.length() == 1 && path.equals("/")) || this.paths.containsKey(path)) {
-            return false;
-        }
-        
-        int delimIndex = path.lastIndexOf("/");
-        String parent = path.substring(0, delimIndex);
-        
-        // Step-2: if the parent doesn't exist. Note that "/" is a valid parent.
-        if (parent.length() > 1 && !this.paths.containsKey(parent)) {
-            return false;
-        }
-        
-        // Step-3: add this new path and return true.
-        this.paths.put(path, value);
-        return true;
-    }
-    
-    public int get(String path) {
-        return this.paths.getOrDefault(path, -1);
-    }
+    String parentDirectory = path.substring(0, lastSlash);
+    if ((parentDirectory.length() > 0 && !directory.containsKey(parentDirectory)) || directory.containsKey(path))
+      return false;
+
+    directory.put(path, value);
+    return true;
+  }
+  
+  public int get(String path) {
+    return directory.containsKey(path) ?
+      directory.get(path) :
+      -1;
+  }
+
+  private int lastSlashIndex(String path) {
+    int i = path.length() - 1;
+    while (i > 0 && path.charAt(i) != '/')
+      i--;
+
+    return i;
+  }
 }
