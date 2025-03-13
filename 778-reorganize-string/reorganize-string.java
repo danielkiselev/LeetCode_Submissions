@@ -4,7 +4,6 @@ class Solution {
         for(char c: s.toCharArray()){
             int currI = c-'0'-49;
             letterHolder[currI]++;
-            System.out.println(currI);
         }
         StringBuilder sb = new StringBuilder();
         int prev = -1;
@@ -12,14 +11,11 @@ class Solution {
             int maxI = -1;
             for(int i=0; i<26; i++){
                 if(prev != i && letterHolder[i]>0){
-                    System.out.println(+i+" ~ "+letterHolder[i]);
                     if(maxI == -1){
                         maxI = i;
                     }
                     
                     else if(letterHolder[i] > letterHolder[maxI]){
-                        System.out.println(letterHolder[i]);
-                        System.out.println(letterHolder[maxI]);
                         maxI = i;
                     }
                 }    
