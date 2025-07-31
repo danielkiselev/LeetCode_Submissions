@@ -1,7 +1,6 @@
 class Solution {
     public int findCircleNum(int[][] isConnected) {
-        int n = isConnected.length;
-        boolean[] visited = new boolean[n];
+        boolean[] visited = new boolean[isConnected.length];
         ArrayDeque <Integer> procQueue = new ArrayDeque <Integer>();
         procQueue.add(0);
         int counter = 0;
@@ -9,7 +8,7 @@ class Solution {
         while(!procQueue.isEmpty()){
             int visiting = procQueue.poll();
             visited[visiting] = true;
-            for(int j = 0; j<n; j++){
+            for(int j = 0; j<visited.length; j++){
                 if(visited[j]){
                     continue;
                 }
@@ -20,7 +19,7 @@ class Solution {
             }
             if(procQueue.isEmpty()){
                 counter++;
-                for(int i = index; i<n; i++){
+                for(int i = index; i<visited.length; i++){
                     if(!visited[i]){
                         procQueue.add(i);
                         visited[i] = true;
