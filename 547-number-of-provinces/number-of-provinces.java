@@ -24,6 +24,7 @@ class Solution {
                     if(visited[i] == 0){
                         procQueue.add(i);
                         visited[i] = 1;
+                        index = i;
                         break;
                     }
                 }
