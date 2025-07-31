@@ -14,7 +14,10 @@ class Solution {
     private void dfs(int node, int[][] connected, int[] visited){
         visited[node] = 1;
         for(int j = 0; j < connected.length ; j ++){
-            if(connected[node][j] == 1 && visited[j] == 0){
+            if(visited[j]!=0){
+                continue;
+            }
+            else if(connected[node][j] == 1){
                 visited[j] = 1;
                 dfs(j,connected, visited);
             }
