@@ -1,6 +1,5 @@
 class Solution {
-
-    public class Node {
+    private class Node {
         String letter;
         ArrayList<String> children = new ArrayList<String>();
 
@@ -12,12 +11,9 @@ class Solution {
             children.add(s);
         }
     }
-
     HashSet<String> visited = new HashSet<String>();
     HashMap<String, Node> graph = new HashMap<String, Node>();
-
     public String alienOrder(String[] words) {
-
         for (int i = 0; i < words.length; i++) {
             String curr = words[i];
             for (int z = 0; z < curr.length(); z++) {
@@ -58,7 +54,6 @@ class Solution {
                 }
             }
         }
-
         StringBuilder sb = new StringBuilder();
         for (String key : graph.keySet()) {
             if (visited.contains(key)) {
@@ -80,8 +75,7 @@ class Solution {
         sb.reverse();
         return sb.toString();
     }
-
-    public String sort(Node n, int depth) {
+    private String sort(Node n, int depth) {
         if (depth > 26) {
             return "";
         }
@@ -93,11 +87,9 @@ class Solution {
         }
         for (String child : n.children) {
             if (visited.contains(child)) {
-
             } else {
                 Node childN = graph.get(child);
                 String res = sort(childN, depth + 1);
-                // System.out.println(res);
                 if (res.equals("")) {
                     return "";
                 }
