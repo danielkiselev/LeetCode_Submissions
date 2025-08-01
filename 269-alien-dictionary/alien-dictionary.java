@@ -2,11 +2,9 @@ class Solution {
     private class Node {
         String letter;
         ArrayList<String> children = new ArrayList<String>();
-
         public Node(String letter) {
             this.letter = letter;
         }
-
         public void addChild(String s) {
             children.add(s);
         }
