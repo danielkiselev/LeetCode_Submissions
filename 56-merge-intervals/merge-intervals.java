@@ -16,7 +16,7 @@ class Solution {
         while(sCounter<start.length && eCounter<end.length ){
             int currStart = start[sCounter]; 
             int currEnd = end[eCounter]; 
-            if((eCounter+1)<end.length && currEnd>=start[(eCounter+1)]){
+            if((eCounter+1)<end.length && currEnd>=start[eCounter+1]){
                 eCounter++;
             }
             else{
