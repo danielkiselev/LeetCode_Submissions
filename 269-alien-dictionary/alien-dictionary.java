@@ -79,7 +79,7 @@ class Solution {
         }
         return sb.toString();
     }
-    private class Node {
+    private static class Node {
         private String letter;
         private ArrayList<String> children = new ArrayList<String>();
         public Node(String letter) {
