@@ -66,7 +66,7 @@ class Solution {
                 
             }else{
                 Node n = graph.get(key);
-                System.out.println(key);
+                // System.out.println(key);
                 if(n.children.isEmpty()){
                     visited.add(n.letter);
                     sb.append(n.letter);
