@@ -1,6 +1,6 @@
 class Solution {
 
-    class Node {
+    public class Node {
         String letter;
         ArrayList<String> children = new ArrayList<String>();
 
