@@ -57,10 +57,10 @@ class Solution {
         return sb.toString();
     }
     private String sort(Node n, int depth) {
-        if (depth > 26) {
-            return "";
-        }
+
         StringBuilder sb = new StringBuilder();
+        if (depth <= 26) {
+        
         if (n.children.isEmpty()) {
             sb.append(n.letter);
             visited.add(n.letter);
@@ -78,6 +78,7 @@ class Solution {
         }
         visited.add(n.letter);
         sb.append(n.letter);
+        }
         return sb.toString();
     }
     private class Node {
