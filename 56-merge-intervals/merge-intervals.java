@@ -12,7 +12,7 @@ class Solution {
         Arrays.sort(end);
         int sCounter = 0;
         int eCounter = 0;
-        ArrayList <int []> res = new ArrayList <>();
+        LinkedList <int []> res = new LinkedList <>();
         while(sCounter<start.length && eCounter<end.length ){
             int currStart = start[sCounter]; 
             int currEnd = end[eCounter]; 
