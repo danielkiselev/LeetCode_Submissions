@@ -81,8 +81,8 @@ class Solution {
         return sb.toString();
     }
     private class Node {
-        String letter;
-        ArrayList<String> children = new ArrayList<String>();
+        private String letter;
+        private ArrayList<String> children = new ArrayList<String>();
         public Node(String letter) {
             this.letter = letter;
         }
