@@ -2,7 +2,7 @@ class Solution {
     HashSet<String> visited = new HashSet<String>();
     HashMap<String, Node> graph = new HashMap<String, Node>();
     public String alienOrder(String[] words) {
-        for (String curr: words) {
+        for (String curr : words) {
             for (int z = 0; z < curr.length(); z++) {
                 String letter = curr.substring(z, z + 1);
                 if (!graph.containsKey(letter)) {
@@ -38,7 +38,7 @@ class Solution {
             }
         }
         StringBuilder sb = new StringBuilder();
-        for (String key: graph.keySet()) {
+        for (String key : graph.keySet()) {
             if (!visited.contains(key)) {
                 Node n = graph.get(key);
                 if (n.children.isEmpty()) {
@@ -57,27 +57,25 @@ class Solution {
         return sb.toString();
     }
     private String sort(Node n, int depth) {
-
         StringBuilder sb = new StringBuilder();
         if (depth <= 26) {
-        
-        if (n.children.isEmpty()) {
-            sb.append(n.letter);
-            visited.add(n.letter);
-            return sb.toString();
-        }
-        for (String child: n.children) {
-            if (!visited.contains(child)) {
-                Node childN = graph.get(child);
-                String res = sort(childN, depth + 1);
-                if (res.isEmpty()) {
-                    return "";
-                }
-                sb.append(res);
+            if (n.children.isEmpty()) {
+                sb.append(n.letter);
+                visited.add(n.letter);
+                return sb.toString();
             }
-        }
-        visited.add(n.letter);
-        sb.append(n.letter);
+            for (String child : n.children) {
+                if (!visited.contains(child)) {
+                    Node childN = graph.get(child);
+                    String res = sort(childN, depth + 1);
+                    if (res.isEmpty()) {
+                        return "";
+                    }
+                    sb.append(res);
+                }
+            }
+            visited.add(n.letter);
+            sb.append(n.letter);
         }
         return sb.toString();
     }
