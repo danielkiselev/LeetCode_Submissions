@@ -26,7 +26,7 @@ class Solution {
                     }
                 }
             }
-            if(odd == 0){
+            else if(odd == 0){
                 if(counter+2 == m+n){
                     if(l1.isEmpty()){
                         return (double)((double)(l2.get(1))+(double)(l2.get(0)))/2;
@@ -61,7 +61,7 @@ class Solution {
                     }
                 }
             }
-            if(counter%2 == 1){
+            else if(counter%2 == 1){
                 if(l1.isEmpty()){
                     l2.remove(l2.size()-1);
 
