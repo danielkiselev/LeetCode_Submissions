@@ -1,9 +1,9 @@
 class Solution {
     public long countAlternatingSubarrays(int[] nums) {
         int prev = nums[0];
-        long count = 0;
-        long ref = 0;
-        for(int i =0; i<nums.length;i++){
+        long count = 1;
+        long ref = 1;
+        for(int i =1; i<nums.length;i++){
             if(nums[i]!=prev){
                 ref += 1;
             }
