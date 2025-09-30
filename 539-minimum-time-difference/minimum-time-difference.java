@@ -1,12 +1,9 @@
 class Solution {
     public int findMinDifference(List<String> timePoints) {
         int [] minPoints = new int [timePoints.size()];
-        int index = 0;
-        for(String tPoint:timePoints){
-            String[] tPArray= tPoint.split(":");
-            int minutesTP = 60*Integer.parseInt(tPArray[0])+Integer.parseInt(tPArray[1]);
-            minPoints[index]= minutesTP;
-            index++;
+        for(int i = 0; i<minPoints.length;i++){
+            String[] tPArray= timePoints.get(i).split(":");
+            minPoints[i] = 60*Integer.parseInt(tPArray[0])+Integer.parseInt(tPArray[1]);
         }
         Arrays.sort(minPoints);
         int res = 1440;
