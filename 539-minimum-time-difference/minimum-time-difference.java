@@ -13,7 +13,7 @@ class Solution {
         for(int i = 0; i<minPoints.length-1;i++){
             res = Math.min(res, minPoints[i+1]-minPoints[i]);
         }
-        res = Math.min(res, (1440-minPoints[minPoints.length-1])+minPoints[0]);
+        res = Math.min(res, (minPoints[0]-minPoints[minPoints.length-1])+1440);
         return res;
     }
 }
