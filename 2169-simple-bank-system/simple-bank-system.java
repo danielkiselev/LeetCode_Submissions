@@ -1,6 +1,6 @@
 class Bank {
 
-    long accounts[];
+    private long accounts[];
 
     public Bank(long[] balance) {
         this.accounts = new long[balance.length+1];
