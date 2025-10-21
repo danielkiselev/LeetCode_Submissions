@@ -1,16 +1,16 @@
 class Bank {
 
-    HashMap<Integer, Long> accounts;
+    long accounts[];
 
     public Bank(long[] balance) {
-        this.accounts = new HashMap<Integer, Long>();
+        this.accounts = new long[balance.length+1];
         for(int i = 0; i< balance.length;i++){
-            this.accounts.put(i+1, balance[i]);
+            accounts[i+1] = balance[i];
         }
     }
     
     public boolean transfer(int account1, int account2, long money) {
-        if(!this.accounts.containsKey(account1) || !this.accounts.containsKey(account2)){
+        if(!(this.accounts.length>=account1) || !(this.accounts.length>=account2)){
             return false;
         }
         if(withdraw(account1, money)){
@@ -20,18 +20,18 @@ class Bank {
     }
     
     public boolean deposit(int account, long money) {
-        if(!this.accounts.containsKey(account)){
+        if(!(this.accounts.length>=account)){
             return false;
         }
-        this.accounts.put(account, this.accounts.get(account)+money);
+        accounts[account]+=money;
         return true;
     }
     
     public boolean withdraw(int account, long money) {
-        if(this.accounts.containsKey(account)){
-            long balancePost = this.accounts.get(account)-money;
+        if((this.accounts.length>=account)){
+            long balancePost = accounts[account]-money;
             if(balancePost>=0){
-                this.accounts.put(account, balancePost);
+                accounts[account] = balancePost;
                 return true;
             }
         }
