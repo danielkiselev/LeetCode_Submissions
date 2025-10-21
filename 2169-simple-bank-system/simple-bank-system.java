@@ -30,12 +30,12 @@ class Bank {
     }
     
     public boolean withdraw(int account, long money) {
-        if(!(this.accounts.length>=account)){
-            return false;
-        }
-        if(accounts[account]-money>=0){
-            accounts[account] -= money;
-            return true;
+        if((this.accounts.length>=account)){
+            long balancePost = accounts[account]-money;
+            if(balancePost>=0){
+                accounts[account] = balancePost;
+                return true;
+            }
         }
         return false;
     }
