@@ -5,7 +5,7 @@ class Bank {
     public Bank(long[] balance) {
         this.accounts = new long[balance.length+1];
         for(int i = 0; i< balance.length;i++){
-            accounts[i+1] = balance[i];
+            this.accounts[i+1] = balance[i];
         }
     }
     
@@ -31,14 +31,13 @@ class Bank {
     }
     
     public boolean withdraw(int account, long money) {
-        if((this.accounts.length>=account)){
-            long balancePost = accounts[account]-money;
-            if(balancePost>=0){
-                accounts[account] = balancePost;
-                return true;
-            }
+        if(!(this.accounts.length>=account)||accounts[account]-money<0){
+            return false;
         }
-        return false;
+
+        this.accounts[account] -= money;
+        return true;
+
     }
 }
 
