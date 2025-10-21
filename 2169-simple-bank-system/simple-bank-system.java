@@ -13,8 +13,10 @@ class Bank {
         if(!(this.accounts.length>=account1) || !(this.accounts.length>=account2)){
             return false;
         }
-        if(withdraw(account1, money)){
-            return deposit(account2, money);
+        if(accounts[account1]- money>=0){
+            accounts[account1]-=money;
+            accounts[account2]+=money;
+                    return true;
         }
         return false;
     }
