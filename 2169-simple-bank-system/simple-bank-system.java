@@ -13,19 +13,20 @@ class Bank {
         if(!(this.accounts.length>=account1) || !(this.accounts.length>=account2)){
             return false;
         }
-        if(accounts[account1]- money>=0){
-            accounts[account1]-=money;
-            accounts[account2]+=money;
-                    return true;
+        else if(accounts[account1]- money<0){
+            return false;
+
         }
-        return false;
+        this.accounts[account1]-=money;
+        this.accounts[account2]+=money;
+        return true;
     }
     
     public boolean deposit(int account, long money) {
         if(!(this.accounts.length>=account)){
             return false;
         }
-        accounts[account]+=money;
+        this.accounts[account]+=money;
         return true;
     }
     
