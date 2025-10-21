@@ -1,64 +1,42 @@
 class Bank {
-    long[] accountBalance;
 
+    HashMap<Integer, Long> accounts;
 
     public Bank(long[] balance) {
-        accountBalance = balance;
-        
+        this.accounts = new HashMap<Integer, Long>();
+        for(int i = 0; i< balance.length;i++){
+            this.accounts.put(i+1, balance[i]);
+        }
     }
     
     public boolean transfer(int account1, int account2, long money) {
-        if(!checkAccount(account2)){
+        if(!this.accounts.containsKey(account1) || !this.accounts.containsKey(account2)){
             return false;
         }
-        if(checkAccountFunds(account1, money)){
-            accountBalance[account1-1] -= money;
-            accountBalance[account2-1] += money;
-            return true;
+        if(withdraw(account1, money)){
+            return deposit(account2, money);
         }
         return false;
-        
-        
     }
     
     public boolean deposit(int account, long money) {
-        if(checkAccount(account)){
-            accountBalance[account-1] += money;
-            return true;
+        if(!this.accounts.containsKey(account)){
+            return false;
         }
-        return false;
-        
+        this.accounts.put(account, this.accounts.get(account)+money);
+        return true;
     }
     
     public boolean withdraw(int account, long money) {
-         if(checkAccountFunds(account, money)){
-            accountBalance[account-1] -= money;
-            return true;
-        }
-        return false;
-        
-    }
-
-    private boolean checkAccount(int acc){
-        if(accountBalance.length<acc){
-            return false;
-        }
-        return true;
-    }
-
-
-    private boolean checkAccountFunds(int acc, long money){
-        if(!checkAccount(acc)){
-            return false;
-        }
-        long currBalance = accountBalance[acc-1];
-        if(currBalance>=money){
-            return true;
+        if(this.accounts.containsKey(account)){
+            long balancePost = this.accounts.get(account)-money;
+            if(balancePost>=0){
+                this.accounts.put(account, balancePost);
+                return true;
+            }
         }
         return false;
     }
-
-
 }
 
 /**
