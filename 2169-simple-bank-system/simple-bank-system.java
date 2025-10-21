@@ -10,12 +10,8 @@ class Bank {
     }
     
     public boolean transfer(int account1, int account2, long money) {
-        if(!(this.accounts.length>=account1) || !(this.accounts.length>=account2)){
+        if(!(this.accounts.length>=account1) || !(this.accounts.length>=account2) ||accounts[account1]- money<0){
             return false;
-        }
-        else if(accounts[account1]- money<0){
-            return false;
-
         }
         this.accounts[account1]-=money;
         this.accounts[account2]+=money;
@@ -34,7 +30,6 @@ class Bank {
         if(!(this.accounts.length>=account)||accounts[account]-money<0){
             return false;
         }
-
         this.accounts[account] -= money;
         return true;
 
