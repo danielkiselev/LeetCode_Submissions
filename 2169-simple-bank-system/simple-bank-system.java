@@ -3,18 +3,15 @@ class Bank {
     private long accounts[];
 
     public Bank(long[] balance) {
-        this.accounts = new long[balance.length+1];
-        for(int i = 0; i< balance.length;i++){
-            this.accounts[i+1] = balance[i];
-        }
+        this.accounts = balance.clone();
     }
     
     public boolean transfer(int account1, int account2, long money) {
-        if(!(this.accounts.length>=account1) || !(this.accounts.length>=account2) ||accounts[account1]- money<0){
+        if(!(this.accounts.length>=account1) || !(this.accounts.length>=account2) ||accounts[account1-1]- money<0){
             return false;
         }
-        this.accounts[account1]-=money;
-        this.accounts[account2]+=money;
+        this.accounts[account1-1]-=money;
+        this.accounts[account2-1]+=money;
         return true;
     }
     
@@ -22,15 +19,15 @@ class Bank {
         if(!(this.accounts.length>=account)){
             return false;
         }
-        this.accounts[account]+=money;
+        this.accounts[account-1]+=money;
         return true;
     }
     
     public boolean withdraw(int account, long money) {
-        if(!(this.accounts.length>=account)||accounts[account]-money<0){
+        if(!(this.accounts.length>=account)||accounts[account-1]-money<0){
             return false;
         }
-        this.accounts[account] -= money;
+        this.accounts[account-1] -= money;
         return true;
 
     }
