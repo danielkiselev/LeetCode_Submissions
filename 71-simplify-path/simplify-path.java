@@ -11,12 +11,15 @@ class Solution {
                         entry.pollFirst();
                     }
                     else if(checkEntry.equals(".")){
-                    
+                        sb = new StringBuilder();
+                        continue;
                     }
                     else{
                         entry.push(checkEntry);
                     }
                     sb = new StringBuilder();
+                }else{
+                    continue;
                 }
 
             }else{
