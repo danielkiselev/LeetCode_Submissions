@@ -4,7 +4,7 @@ class Solution {
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i<path.length();i++){
             char curr = path.charAt(i);
-            if(curr == '/'){
+            if(curr == '/' ){
                 if(sb.length()>0){
                     String checkEntry = sb.toString();
                     if(checkEntry.equals("..")){
