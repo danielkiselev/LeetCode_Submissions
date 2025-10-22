@@ -10,10 +10,7 @@ class Solution {
                     if(checkEntry.equals("..")){
                         entry.pollFirst();
                     }
-                    else if(checkEntry.equals(".")){
-                    
-                    }
-                    else{
+                    else if(!checkEntry.equals(".") && !checkEntry.isEmpty() ){
                         entry.push(checkEntry);
                     }
                     sb = new StringBuilder();
