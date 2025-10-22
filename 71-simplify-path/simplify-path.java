@@ -2,9 +2,8 @@ class Solution {
     public String simplifyPath(String path) {
         ArrayDeque<String> entry = new ArrayDeque<String>();
         StringBuilder sb = new StringBuilder();
-        char[] pathChars = path.toCharArray();
         for(int i = 0; i<path.length();i++){
-            char curr = pathChars[i];
+            char curr = path.charAt(i);
             if(curr == '/'){
                 if(sb.length()>0){
                     String checkEntry = sb.toString();
