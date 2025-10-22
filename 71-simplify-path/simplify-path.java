@@ -35,14 +35,14 @@ class Solution {
                 entry.push(checkEntry);
             }
         }
-        StringBuilder res = new StringBuilder();
+        sb = new StringBuilder();
         while(!entry.isEmpty()){
-            res.append("/");
-            res.append(entry.pollLast());
+            sb.append("/");
+            sb.append(entry.pollLast());
         }
-        if(res.isEmpty()){
+        if(sb.isEmpty()){
             return "/";
         }
-        return res.toString();
+        return sb.toString();
     }
 }
