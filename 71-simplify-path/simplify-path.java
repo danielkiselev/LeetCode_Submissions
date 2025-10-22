@@ -2,24 +2,22 @@ class Solution {
     public String simplifyPath(String path) {
         ArrayDeque<String> entry = new ArrayDeque<String>();
         StringBuilder sb = new StringBuilder();
+        char[] pathChars = path.toCharArray();
         for(int i = 0; i<path.length();i++){
-            char curr = path.charAt(i);
-            if(curr == '/' ){
+            char curr = pathChars[i];
+            if(curr == '/'){
                 if(sb.length()>0){
                     String checkEntry = sb.toString();
                     if(checkEntry.equals("..")){
                         entry.pollFirst();
                     }
                     else if(checkEntry.equals(".")){
-                        sb = new StringBuilder();
-                        continue;
+                    
                     }
                     else{
                         entry.push(checkEntry);
                     }
                     sb = new StringBuilder();
-                }else{
-                    continue;
                 }
 
             }else{
