@@ -3,7 +3,7 @@ class Bank {
     private long accounts[];
 
     public Bank(long[] balance) {
-        this.accounts = balance.clone();
+        this.accounts = balance;
     }
     
     public boolean transfer(int account1, int account2, long money) {
